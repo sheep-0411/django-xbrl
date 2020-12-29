@@ -1,0 +1,3 @@
+djagno
+whitenoise
+gunicorn
