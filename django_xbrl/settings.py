@@ -77,13 +77,20 @@ WSGI_APPLICATION = 'django_xbrl.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# データベースの接続設定が１行で楽に書けるライブラリ
+import dj_database_url
 
+# .envという環境設定ファイルを使ってプロジェクトの設定が出来るライブラリ
+from dotenv import(
+    find_dotenv,
+    load_dotenv,
+)
+# 設定ファイルを読み込む
+load_dotenv(find_dotenv())
+DATABASES = {
+    #「conn_max_age=600」→高速化の設定
+    'default': dj_database_url.config(conn_max_age=600)
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
