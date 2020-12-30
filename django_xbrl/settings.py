@@ -80,6 +80,7 @@ WSGI_APPLICATION = 'django_xbrl.wsgi.application'
 # データベースの接続設定が１行で楽に書けるライブラリ
 import dj_database_url
 
+
 # .envという環境設定ファイルを使ってプロジェクトの設定が出来るライブラリ
 from dotenv import(
     find_dotenv,
