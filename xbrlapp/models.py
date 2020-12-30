@@ -20,6 +20,8 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+from django.urls import reverse_lazy
+
 class Post(models.Model):
     created = models.DateTimeField(
         auto_now_add=True,
@@ -52,3 +54,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse_lazy('detail', args=[self.id])
